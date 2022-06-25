@@ -47,16 +47,17 @@ export default function Model({ ...props }) {
   const group = useRef()
 
   useFrame(() => {
-    group.current.rotation.y = globalCoords.x*0.01;
-    // group.current.rotation.x = globalCoords.y*0.01;
+    group.current.rotation.y = globalCoords.x*0.002;
+    
+    
 });
 
   const { nodes, materials } = useGLTF('/iphone.gltf')
   
   return (
-    <group ref={group} {...props} position={[0,0,0]} dispose={null}>
+    <group ref={group} {...props} position={[0,0,0]} rotation={[0, -Math.PI /2, 0]} dispose={null}>
       <group >
-        <group  rotation={[0, Math.PI /2, 0]} scale={2}>
+        <group  rotation={[0, -Math.PI /2, 0]} scale={2}>
           <group scale={7}>
             <mesh geometry={nodes.Body_Mic_0.geometry} material={materials.material} />
             <mesh geometry={nodes.Body_Bezel_0.geometry} material={materials.Bezel} />
